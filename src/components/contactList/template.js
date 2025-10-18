@@ -1,4 +1,6 @@
-function getContactListTemplate(){
+//import "./styles.css" a dequote si css
+
+export default function getTemplate(){
     return `      <section class="w-2/3 p-6">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold mb-4">Contacts List</h2>
