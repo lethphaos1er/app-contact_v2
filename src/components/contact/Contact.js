@@ -1,4 +1,4 @@
-import getTemplate from "../template";
+import getTemplate from "./template";
 
 export default class Contact{
     constructor(data){

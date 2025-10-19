@@ -2,7 +2,6 @@
 
 export default function getTemplate(contact){
     return `
-        <tbody>
             <tr class="contact-row">
               <td class="p-4">
                 <span class="isEditing-hidden">qdg</span>
@@ -47,6 +46,5 @@ export default function getTemplate(contact){
                   </button>
                 </div>
               </td>
-            </tr>
-        <tbody>`
+            </tr>`
 }
