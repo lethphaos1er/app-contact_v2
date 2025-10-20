@@ -1,15 +1,13 @@
-//import "./styles.css" a dequote si css
-
 export default function getTemplate(){
-    return `      <section class="w-2/3 p-6">
+  return `
+    <div class="layout w-full bg-white rounded-lg shadow-lg flex flex-wrap flex-row-reverse overflow-hidden">
+      <!-- On laisse la SECTION d'abord ; l'ASIDE sera APPEND ensuite -->
+      <section class="w-2/3 p-6">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold mb-4">Contacts List</h2>
-          <p class="text-gray-600 mb-4">
-            Contacts Count : <span class="font-bold">xxx</span>
-          </p>
+          <p class="text-gray-600 mb-4">Contacts Count : <span class="font-bold">xxx</span></p>
         </div>
 
-        <!-- Filtre de recherche -->
         <div class="mb-4">
           <input
             type="text"
@@ -18,25 +16,23 @@ export default function getTemplate(){
           />
         </div>
 
-        <!-- Liste des contacts triée et filtrée -->
-        <table class="table-auto w-full contacts-table">
+        <table class="table-auto w-full contacts-table border-collapse table-fixed">
           <thead>
             <tr class="bg-gray-200">
-              <th class="text-left p-4 rounded-tl-lg">
-                <a href="#">Firstname</a>
-              </th>
-              <th class="text-left p-4"><a href="#">Lastname</a></th>
-              <th class="text-left p-4">
-                <a href="#">Email</a>
-              </th>
-              <th class="text-right p-4 rounded-tr-lg">Actions</th>
+              <th class="text-left p-4 rounded-tl-lg text-gray-700"><a href="#">Firstname</a></th>
+              <th class="text-left p-4 text-gray-700"><a href="#">Lastname</a></th>
+              <th class="text-left p-4 text-gray-700"><a href="#">Email</a></th>
+              <th class="text-right p-4 rounded-tr-lg text-gray-700">Actions</th>
             </tr>
           </thead>
-          
+          <tbody class="tr"></tbody>
         </table>
       </section>
+      <!-- L’ASIDE sera APPEND ici (après), mais s’affichera à gauche grâce à flex-row-reverse -->
+    </div>
 
-      <footer class="w-full bg-gray-500 text-white text-xs p-2">
-        &copy; EAFC 2025 Contacts App. All rights reserved.
-      </footer>`
+    <footer class="w-full bg-gray-500 text-white text-xs p-2">
+      &copy; EAFC 2025 Contacts App. All rights reserved.
+    </footer>
+  `;
 }

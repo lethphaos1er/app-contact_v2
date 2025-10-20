@@ -1,4 +1,4 @@
-function getAddContactTemplate(){
+export default function getAddContactTemplate(){
     return `<aside class="w-1/3 bg-gray-200 p-6 pb-12">
         <h2 class="text-xl font-bold mb-4">Add a Contact</h2>
         <div class="mb-4">
