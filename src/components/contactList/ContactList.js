@@ -16,6 +16,14 @@ export default class ContactList {
     const contacts = await DB.findAll();
     this.contacts = contacts.map((c) => new Contact(c));
     this.render();
+    this.renderContactCount();
+  }
+  getContactCount(){
+    return this.contacts.length;
+  }
+
+  renderContactCount(){
+    this.domElt.querySelector(".contact-count").innerText = this.getContactCount();
   }
 
   render() {
@@ -24,8 +32,10 @@ export default class ContactList {
     // container flex (row-reverse) qui reçoit la section et on APPEND l’aside
     const container = this.domElt.querySelector(".layout");
     const t = document.createElement("template");
-    t.innerHTML = getAddTemplate().trim();   // contient déjà <aside class="w-1/3 ...">
-    container.append(t.content.firstElementChild); // <- APPEND comme demandé
+    t.innerHTML = getAddTemplate().trim();   
+    container.append(t.content.firstElementChild);
+
+    renderContactCount();
 
     // tbody pour les <tr>
     this.listDomElt = this.domElt.querySelector(".tr");
@@ -40,6 +50,7 @@ export default class ContactList {
     const created = await DB.create(data);
     const item = new Contact(created);
     this.contacts.push(item);
+    this.renderContactCount();
     item.render(this.listDomElt);
   }
 
@@ -47,6 +58,7 @@ export default class ContactList {
     await DB.deleteOneById(id);
     this.contacts.splice(this.contacts.findIndex((c) => c.id == id), 1);
     this.domElt.querySelector(`[data-id='${id}']`).remove();
+    this.renderContactCount();
   }
 
   initEvents() {
