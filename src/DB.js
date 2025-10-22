@@ -14,7 +14,7 @@ export default class DB {
     const response = await fetch(this.apiURL + "contacts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...data, created_at: Date.now() }),
+      body: JSON.stringify({ data, created_at: Date.now() }),
   });
   return response.json();
   }
@@ -23,6 +23,15 @@ export default class DB {
   static async deleteOneById(data) {
     const response = await fetch(this.apiURL + "contacts/" + data, {
       method: "DELETE",
+    });
+    return response.json();
+  }
+
+  static async updatOneById(data) {
+    const response = await fetch(this.apiURL + "contacts/" + data.id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
     return response.json();
   }
