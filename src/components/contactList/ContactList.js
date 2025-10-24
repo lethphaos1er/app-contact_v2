@@ -35,7 +35,7 @@ export default class ContactList {
     t.innerHTML = getAddTemplate().trim();   
     container.append(t.content.firstElementChild);
 
-    renderContactCount();
+    this.renderContactCount();
 
     // tbody pour les <tr>
     this.listDomElt = this.domElt.querySelector(".tr");
@@ -68,8 +68,14 @@ export default class ContactList {
     const em  = this.domElt.querySelector('input[name="email"]');
 
     btn.addEventListener("click", () => {
-      this.addContact({ firstname: fn.value, lastname: ln.value, email: em.value });
-      fn.value = ""; ln.value = ""; em.value = "";
+      this.addContact({ 
+        firstname: fn.value.trim(), 
+        lastname: ln.value.trim(), 
+        email: em.value.trim() 
+      });
+      fn.value = ""; 
+      ln.value = ""; 
+      em.value = "";
     });
   }
 }

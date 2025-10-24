@@ -14,7 +14,12 @@ export default class DB {
     const response = await fetch(this.apiURL + "contacts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ data, created_at: Date.now() }),
+      body: JSON.stringify({ 
+        firstname: data.firstname,
+        lastname: data.lastname,
+        email: data.email,
+        created_at: Date.now(),
+      }),
   });
   return response.json();
   }
